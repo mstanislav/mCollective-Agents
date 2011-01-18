@@ -5,3 +5,5 @@
 ## Agents Available ##
 ### APT ###
 **Description:** Various APT related commands to assist in managing a Debian or Ubuntu environment
+### Spam Assassin ###
+**Description:** Various Spam Assassin related commands

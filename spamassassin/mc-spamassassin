@@ -1,0 +1,34 @@
+#!/usr/bin/ruby
+
+require 'mcollective'
+include MCollective::RPC
+
+options = rpcoptions do |parser, options|
+    parser.define_head "Management of Spam Assassin Tasks"
+    parser.banner = "Usage: mc-spamassassin [filters] command"
+    parser.separator ""
+    parser.separator "Command can be one of the following:"
+    parser.separator "  update          - update ruleset"
+    parser.separator "  compile         - compile ruleset"
+    parser.separator "  restart         - restart the service"
+    parser.separator "  full            - execute an update, compile, and restart"
+end
+
+if ARGV.length == 1
+    command = ARGV.shift
+else
+    puts("Please specify a command.")
+    exit 1
+end
+
+mc = rpcclient("spamassassin", :options => options)
+
+mc.progress = false
+
+mc.send(command) do |resp|
+    begin
+        printf("%-20s: %s\n", resp[:senderid], resp[:body][:data])
+    rescue RPCError => e
+        puts "The RPC agent returned an error: #{e}"
+    end
+end
