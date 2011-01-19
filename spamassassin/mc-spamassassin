@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 require 'mcollective'
 include MCollective::RPC
@@ -8,6 +8,7 @@ options = rpcoptions do |parser, options|
     parser.banner = "Usage: mc-spamassassin [filters] command"
     parser.separator ""
     parser.separator "Command can be one of the following:"
+    parser.separator "  status          - status of the service and rule compilation timestamp"
     parser.separator "  update          - update ruleset"
     parser.separator "  compile         - compile ruleset"
     parser.separator "  restart         - restart the service"
@@ -21,14 +22,23 @@ else
     exit 1
 end
 
+if MCollective::Util.empty_filter?(options[:filter])
+    print("Do you really want to operate on services unfiltered? (y/n): ")
+    STDOUT.flush
+
+    exit unless STDIN.gets.chomp =~ /^y$/
+end
+
 mc = rpcclient("spamassassin", :options => options)
 
 mc.progress = false
 
 mc.send(command) do |resp|
     begin
-        printf("%-20s: %s\n", resp[:senderid], resp[:body][:data])
+        printf("%-40s %s\n", resp[:senderid], resp[:body][:data])
     rescue RPCError => e
         puts "The RPC agent returned an error: #{e}"
     end
 end
+
+printrpcstats
