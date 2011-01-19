@@ -5,7 +5,7 @@ module MCollective
                         :description => "Agent To Manage APT",
                         :author      => "Mark Stanislav",
                         :license     => "GPLv2",
-                        :version     => "1.0",
+                        :version     => "1.1",
                         :url         => "https://github.com/mstanislav/mCollective-Agents",
                         :timeout     => 90
 
