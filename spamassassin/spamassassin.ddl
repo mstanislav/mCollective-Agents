@@ -2,7 +2,7 @@ metadata    :name        => "SimpleRPC Agent For Spam Assassin Management",
             :description => "Agent To Manage Spam Assassin",
             :author      => "Mark Stanislav",
             :license     => "GPLv2",
-            :version     => "1.1",
+            :version     => "1.2",
             :url         => "https://github.com/mstanislav/mCollective-Agents",
             :timeout     => 90
 
@@ -12,6 +12,14 @@ action "status", :description => "Status of service and ruleset compilation time
     output "status",
           :description => "Status of service and timestamp of compiled rulset",
           :display_as  => "Status Execution"
+end
+
+action "lint", :description => "Ruleset syntax verification" do
+    display :always
+
+    output "status",
+          :description => "Verification of ruleset syntax",
+          :display_as  => "Ruleset Verfication Execution"
 end
 
 action "update", :description => "Update rules if available" do

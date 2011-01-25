@@ -5,7 +5,7 @@ module MCollective
                         :description => "Agent To Manage Spam Assassin",
                         :author      => "Mark Stanislav",
                         :license     => "GPLv2",
-                        :version     => "1.1",
+                        :version     => "1.2",
                         :url         => "https://github.com/mstanislav/mCollective-Agents",
                         :timeout     => 90
 
@@ -18,6 +18,10 @@ module MCollective
                 if File.exists?(@compiled_ruleset)
                      reply.data += ", COMPILED RULESET " + File.mtime(@compiled_ruleset).to_s.upcase
                 end
+            end
+
+            def lint_action
+                reply.data = %x[OUTPUT=\"\$(spamassassin --lint 2>&1 | grep detected | awk '{ print \$4 }')\"; if [ \$OUTPUT ]; then echo \"\$OUTPUT SYNTAX ERRORS\"; else echo 'SYNTAX OK'; fi].chomp
             end
 
             def update_action

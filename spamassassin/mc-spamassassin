@@ -9,6 +9,7 @@ options = rpcoptions do |parser, options|
     parser.separator ""
     parser.separator "Command can be one of the following:"
     parser.separator "  status          - status of the service and rule compilation timestamp"
+    parser.separator "  lint            - verify ruleset syntax"
     parser.separator "  update          - update ruleset"
     parser.separator "  compile         - compile ruleset"
     parser.separator "  restart         - restart the service"
