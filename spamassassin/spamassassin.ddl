@@ -2,7 +2,7 @@ metadata    :name        => "SimpleRPC Agent For Spam Assassin Management",
             :description => "Agent To Manage Spam Assassin",
             :author      => "Mark Stanislav",
             :license     => "GPLv2",
-            :version     => "1.2",
+            :version     => "1.3",
             :url         => "https://github.com/mstanislav/mCollective-Agents",
             :timeout     => 90
 

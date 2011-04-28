@@ -5,12 +5,12 @@ module MCollective
                         :description => "Agent To Manage Spam Assassin",
                         :author      => "Mark Stanislav",
                         :license     => "GPLv2",
-                        :version     => "1.2",
+                        :version     => "1.3",
                         :url         => "https://github.com/mstanislav/mCollective-Agents",
                         :timeout     => 90
 
             def startup_hook
-                @compiled_ruleset = @config.pluginconf["spamassassin.compiled_ruleset"] || "/var/lib/spamassassin/compiled/5.008/3.002005/Mail/SpamAssassin/CompiledRegexps/body_0.pm"
+                @compiled_ruleset = @config.pluginconf["spamassassin.compiled_ruleset"] || "/var/lib/spamassassin/compiled/5.008/3.002005/bases_body_0.pl"
             end
 
             def status_action
