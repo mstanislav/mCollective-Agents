@@ -2,7 +2,7 @@ metadata    :name        => "SimpleRPC Agent For APT Management",
             :description => "Agent To Manage APT",
             :author      => "Mark Stanislav",
             :license     => "GPLv2",
-            :version     => "1.1",
+            :version     => "1.3",
             :url         => "https://github.com/mstanislav/mCollective-Agents",
             :timeout     => 90
 
@@ -35,5 +35,21 @@ action "update", :description => "Update repository information" do
 
     output "status",
           :description => "Status of update exection",
+          :display_as  => "Update Execution"
+end
+
+action "upgrade", :description => "Perform System Upgrade" do
+    display :always
+
+    output "status",
+          :description => "Status of upgrade exection",
+          :display_as  => "Update Execution"
+end
+
+action "update", :description => "Perform System Dist-Upgrade" do
+    display :always
+
+    output "status",
+          :description => "Status of ugrade exection",
           :display_as  => "Update Execution"
 end

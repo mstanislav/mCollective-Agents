@@ -5,7 +5,7 @@ module MCollective
                         :description => "Agent To Manage APT",
                         :author      => "Mark Stanislav",
                         :license     => "GPLv2",
-                        :version     => "1.1",
+                        :version     => "1.3",
                         :url         => "https://github.com/mstanislav/mCollective-Agents",
                         :timeout     => 90
 
@@ -23,6 +23,12 @@ module MCollective
 
             def update_action
                 reply.data = %x[/usr/bin/apt-get update > /dev/null 2>&1 && echo OK || echo FAILED].chomp
+            end
+            def upgrade_actipn
+                reply.data = %x[/usr/bin/apt-get upgrade -y > /dev/null 2>&1 && echo OK || echo FAILED].chomp
+            end
+            def dist-upgrade_Action
+                reply.data = %x[/usr/bin/apt-get dist-upgrade -y > /dev/null 2>&1 && echo OK || echo FAILED].chomp
             end
         end
     end
