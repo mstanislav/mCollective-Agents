@@ -46,7 +46,7 @@ action "upgrade", :description => "Perform System Upgrade" do
           :display_as  => "Update Execution"
 end
 
-action "dist-upgrade", :description => "Perform System Dist-Upgrade" do
+action "distupgrade", :description => "Perform System Dist-Upgrade" do
     display :always
 
     output "status",
