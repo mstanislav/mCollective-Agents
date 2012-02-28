@@ -24,10 +24,10 @@ module MCollective
             def update_action
                 reply.data = %x[/usr/bin/apt-get update > /dev/null 2>&1 && echo OK || echo FAILED].chomp
             end
-            def upgrade_actipn
+            def upgrade_action
                 reply.data = %x[/usr/bin/apt-get upgrade -y > /dev/null 2>&1 && echo OK || echo FAILED].chomp
             end
-            def dist-upgrade_action
+            def distupgrade_action
                 reply.data = %x[/usr/bin/apt-get dist-upgrade -y > /dev/null 2>&1 && echo OK || echo FAILED].chomp
             end
         end
