@@ -21,6 +21,10 @@ module MCollective
                 reply.data = %x[/usr/bin/apt-get clean > /dev/null 2>&1 && echo OK || echo FAILED].chomp
             end
 
+            def removebroken_action
+                reply.data = %x[/usr/bin/dpkg -l | grep '^iF' | /usr/bin/awk '{ print $2}' | /usr/bin/xargs sudo /usr/bin/apt-get -y remove` > /dev/null 2>&1 && echo OK || echo FAILED].chomp
+            end
+
             def update_action
                 reply.data = %x[/usr/bin/apt-get update > /dev/null 2>&1 && echo OK || echo FAILED].chomp
             end
