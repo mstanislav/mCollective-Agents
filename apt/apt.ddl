@@ -30,6 +30,14 @@ action "clean", :description => "Remove all package archive files" do
           :display_as  => "Cleaning Execution"
 end
 
+action "removebroken", :description => "Remove all broken packages" do
+    display :always
+
+    output "status",
+          :description => "Status of purging execution",
+          :display_as  => "Purging Execution"
+end
+
 action "update", :description => "Update repository information" do
     display :always
 

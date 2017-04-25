@@ -11,6 +11,7 @@ options = rpcoptions do |parser, options|
     parser.separator "  upgrades        - list number of available package upgrades"
     parser.separator "  installed       - list number of installed packages"
     parser.separator "  clean           - clean package archive files (i.e. apt-get clean)"
+    parser.separator "  removebroken    - remove incomplete packages from broken installations"
     parser.separator "  update          - perform system update (i.e. apt-get update)"
     parser.separator "  upgrade         - perform system upgrade (i.e. apt-get upgrade)"
     parser.separator "  distupgrade     - perform system dist-upgrade (i.e. apt-get dist-upgrade)"
